@@ -2,6 +2,7 @@
   "name": "bespoke-jumpy",
   "version": "0.0.0",
   "dependencies": {
-    "bespoke.js": ">=0.3.0"
+    "bespoke.js": ">=0.3.0",
+    "bespoke-convenient": ">=0.1.0"
   }
 }
