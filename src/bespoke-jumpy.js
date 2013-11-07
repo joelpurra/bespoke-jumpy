@@ -47,7 +47,7 @@
             return result;
         },
 
-        internal = {
+        unboundDeckMethods = {
             // Plugin functions expect to be executed in a deck context
             firstIndex: function() {
                 var index = 0;
@@ -91,7 +91,7 @@
 
                     publicDeckMethods.forEach(function(methodName) {
                         original[methodName] = deck[methodName];
-                        deck[methodName] = internal[methodName].bind(deck);
+                        deck[methodName] = unboundDeckMethods[methodName].bind(deck);
                     });
                 },
 
