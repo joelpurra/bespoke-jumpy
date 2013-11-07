@@ -100,14 +100,18 @@
                         digit,
                         index;
 
-                    eventHandled = eventHandled || (e.which == KeyConstants.END && cv.fire(deck, "end", e) && deck.last());
-                    eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.fire(deck, "home", e) && deck.first());
+                    eventHandled = eventHandled || (e.which == KeyConstants.END && cv.fire(deck, "end", e) && !deck.last());
+                    eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.fire(deck, "home", e) && !deck.first());
 
                     if (isDigitKey(e.which)) {
                         // TODO: support multi-digit slide numbers with a timeout
                         digit = getDigit(e.which);
                         index = (digit - 1 + 10) % 10;
-                        eventHandled = eventHandled || (cv.fire(deck, "jump", e, index) && deck.slide(index));
+                        eventHandled = eventHandled || (cv.fire(deck, "jump", e, index) && !deck.slide(index));
+                    }
+
+                    if (eventHandled) {
+                        e.preventDefault();
                     }
 
                     return !eventHandled;
