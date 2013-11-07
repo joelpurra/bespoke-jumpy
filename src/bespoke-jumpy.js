@@ -77,7 +77,9 @@
         },
 
         plugin = function(deck) {
-            var original = {},
+            var publicDeckMethods = ["firstIndex", "lastIndex", "first", "last"],
+
+                original = {},
 
                 registerDeckExtensions = function() {
                     // Bind internalFire to the deck instance, so it doesn't have to be passed all the time.
@@ -87,25 +89,19 @@
                     //original.internalFire = cv.internalFire;
                     //cv.internalFire = cv.internalFire.bind(cv, deck);
 
-                    original.firstIndex = deck.firstIndex;
-                    original.lastIndex = deck.lastIndex;
-                    original.first = deck.first;
-                    original.last = deck.last;
-
-                    deck.firstIndex = internal.firstIndex.bind(deck);
-                    deck.lastIndex = internal.lastIndex.bind(deck);
-                    deck.first = internal.first.bind(deck);
-                    deck.last = internal.last.bind(deck);
+                    publicDeckMethods.forEach(function(methodName) {
+                        original[methodName] = deck[methodName];
+                        deck[methodName] = internal[methodName].bind(deck);
+                    });
                 },
 
                 unregisterDeckExtensions = function() {
                     // TODO: re-test bound internalFire in the future.
                     //cv.internalFire = original.internalFire;
 
-                    deck.firstIndex = original.firstIndex;
-                    deck.lastIndex = original.lastIndex;
-                    deck.first = original.first;
-                    deck.last = original.last;
+                    publicDeckMethods.forEach(function(methodName) {
+                        deck[methodName] = original[methodName];
+                    });
                 },
 
                 keyDownListener = function(e) {
