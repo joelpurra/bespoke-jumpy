@@ -95,15 +95,6 @@
                     });
                 },
 
-                unregisterDeckExtensions = function() {
-                    // TODO: re-test bound internalFire in the future.
-                    //cv.internalFire = original.internalFire;
-
-                    publicDeckMethods.forEach(function(methodName) {
-                        deck[methodName] = original[methodName];
-                    });
-                },
-
                 keyDownListener = function(e) {
                     var eventHandled = false,
                         digit,
@@ -124,10 +115,6 @@
 
                 enable = function() {
                     document.addEventListener("keydown", keyDownListener, false);
-                },
-
-                disable = function() {
-                    document.removeEventListener("keydown", keyDownListener, false);
                 },
 
                 init = function() {
