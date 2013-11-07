@@ -1,3 +1,5 @@
+/*global document:true, bespoke:true */
+
 (function(document, bespoke, convenient, ns, pluginName, undefined) {
     "use strict";
 
@@ -61,44 +63,83 @@
 
             first: function(customData) {
                 var index = this.firstIndex(),
-                    result = cv.internalFire("first", null, index, customData) && this.slide(index, customData);
+                    result = cv.internalFire(this, "first", null, index, customData) && this.slide(index, customData);
 
                 return result;
             },
 
             last: function(customData) {
                 var index = this.lastIndex(),
-                    result = cv.internalFire("last", null, index, customData) && this.slide(index, customData);
+                    result = cv.internalFire(this, "last", null, index, customData) && this.slide(index, customData);
 
                 return result;
             }
         },
 
         plugin = function(deck) {
-            cv.internalFire = cv.internalFire.bind(cv, deck);
+            var original = {},
 
-            deck.firstIndex = internal.firstIndex.bind(deck);
-            deck.lastIndex = internal.lastIndex.bind(deck);
-            deck.first = internal.first.bind(deck);
-            deck.last = internal.last.bind(deck);
+                registerDeckExtensions = function() {
+                    // Bind internalFire to the deck instance, so it doesn't have to be passed all the time.
+                    // Works in the browser, but doesn't pass jasmine tests.
+                    // Could be another problem with phantom-polyfill.js.
+                    // TODO: re-test bound internalFire in the future.
+                    //original.internalFire = cv.internalFire;
+                    //cv.internalFire = cv.internalFire.bind(cv, deck);
 
-            document.addEventListener("keydown", function(e) {
-                var eventHandled = false,
-                    digit,
-                    index;
+                    original.firstIndex = deck.firstIndex;
+                    original.lastIndex = deck.lastIndex;
+                    original.first = deck.first;
+                    original.last = deck.last;
 
-                eventHandled = eventHandled || (e.which == KeyConstants.END && cv.internalFire("end", e) && deck.last());
-                eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.internalFire("home", e) && deck.first());
+                    deck.firstIndex = internal.firstIndex.bind(deck);
+                    deck.lastIndex = internal.lastIndex.bind(deck);
+                    deck.first = internal.first.bind(deck);
+                    deck.last = internal.last.bind(deck);
+                },
 
-                if (isDigitKey(e.which)) {
-                    // TODO: support multi-digit slide numbers with a timeout
-                    digit = getDigit(e.which);
-                    index = (digit - 1 + 10) % 10;
-                    eventHandled = eventHandled || (cv.internalFire("jump", e, index) && deck.slide(index));
-                }
+                unregisterDeckExtensions = function() {
+                    // TODO: re-test bound internalFire in the future.
+                    //cv.internalFire = original.internalFire;
 
-                return !eventHandled;
-            });
+                    deck.firstIndex = original.firstIndex;
+                    deck.lastIndex = original.lastIndex;
+                    deck.first = original.first;
+                    deck.last = original.last;
+                },
+
+                keyDownListener = function(e) {
+                    var eventHandled = false,
+                        digit,
+                        index;
+
+                    eventHandled = eventHandled || (e.which == KeyConstants.END && cv.internalFire(deck, "end", e) && deck.last());
+                    eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.internalFire(deck, "home", e) && deck.first());
+
+                    if (isDigitKey(e.which)) {
+                        // TODO: support multi-digit slide numbers with a timeout
+                        digit = getDigit(e.which);
+                        index = (digit - 1 + 10) % 10;
+                        eventHandled = eventHandled || (cv.internalFire(deck, "jump", e, index) && deck.slide(index));
+                    }
+
+                    return !eventHandled;
+                },
+
+                enable = function() {
+                    document.addEventListener("keydown", keyDownListener, false);
+                },
+
+                disable = function() {
+                    document.removeEventListener("keydown", keyDownListener, false);
+                },
+
+                init = function() {
+                    registerDeckExtensions();
+                    enable();
+                };
+
+            init();
         };
 
     if (ns[pluginName] !== undefined) {
