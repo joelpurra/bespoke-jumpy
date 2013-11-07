@@ -1,6 +1,6 @@
 {
   "name": "bespoke-jumpy",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Keyboard shortcuts to jump straight to a specific slide in bespoke.js",
   "homepage": "https://github.com/joelpurra/bespoke-jumpy",
   "bugs": "https://github.com/joelpurra/bespoke-jumpy/issues",
