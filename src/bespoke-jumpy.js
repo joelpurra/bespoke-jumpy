@@ -100,8 +100,8 @@
                         digit,
                         index;
 
-                    eventHandled = eventHandled || (e.which == KeyConstants.END && cv.fire(deck, "end", e) && !deck.last());
-                    eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.fire(deck, "home", e) && !deck.first());
+                    eventHandled = eventHandled || (e.which === KeyConstants.END && cv.fire(deck, "end", e) && !deck.last());
+                    eventHandled = eventHandled || (e.which === KeyConstants.HOME && cv.fire(deck, "home", e) && !deck.first());
 
                     if (isDigitKey(e.which)) {
                         // TODO: support multi-digit slide numbers with a timeout

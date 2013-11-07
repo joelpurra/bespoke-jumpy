@@ -3,7 +3,7 @@
 (function(bespoke) {
     "use strict";
 
-    var deck = bespoke.horizontal.from("article", {
+    bespoke.horizontal.from("article", {
         convenient: true,
         jumpy: true
     });
