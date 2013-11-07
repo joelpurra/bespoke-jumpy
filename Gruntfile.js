@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     jasmine: {
       src: ['src/**/*.js'],
       options: {
-        vendor: ['node_modules/bespoke/dist/bespoke.js'],
+        vendor: ['node_modules/bespoke/dist/bespoke.js', 'node_modules/bespoke-convenient/dist/bespoke-convenient.js'],
         specs: 'spec/*Spec.js',
         helpers: 'spec/*Helper.js'
       }
