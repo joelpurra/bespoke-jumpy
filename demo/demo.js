@@ -1,3 +1,10 @@
-bespoke.horizontal.from('article', {
-  jumpy: true
-});
+/*global bespoke:true */
+
+(function(bespoke) {
+    "use strict";
+
+    var deck = bespoke.horizontal.from("article", {
+        convenient: true,
+        jumpy: true
+    });
+}(bespoke));
