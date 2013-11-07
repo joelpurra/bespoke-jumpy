@@ -63,14 +63,14 @@
 
             first: function(customData) {
                 var index = this.firstIndex(),
-                    result = cv.internalFire(this, "first", null, index, customData) && this.slide(index, customData);
+                    result = cv.fire(this, "first", null, index, customData) && this.slide(index, customData);
 
                 return result;
             },
 
             last: function(customData) {
                 var index = this.lastIndex(),
-                    result = cv.internalFire(this, "last", null, index, customData) && this.slide(index, customData);
+                    result = cv.fire(this, "last", null, index, customData) && this.slide(index, customData);
 
                 return result;
             }
@@ -82,12 +82,12 @@
                 original = {},
 
                 registerDeckExtensions = function() {
-                    // Bind internalFire to the deck instance, so it doesn't have to be passed all the time.
+                    // Bind fire to the deck instance, so it doesn't have to be passed all the time.
                     // Works in the browser, but doesn't pass jasmine tests.
                     // Could be another problem with phantom-polyfill.js.
-                    // TODO: re-test bound internalFire in the future.
-                    //original.internalFire = cv.internalFire;
-                    //cv.internalFire = cv.internalFire.bind(cv, deck);
+                    // TODO: re-test bound fire in the future.
+                    //original.fire = cv.fire;
+                    //cv.fire = cv.fire.bind(cv, deck);
 
                     publicDeckMethods.forEach(function(methodName) {
                         original[methodName] = deck[methodName];
@@ -100,14 +100,14 @@
                         digit,
                         index;
 
-                    eventHandled = eventHandled || (e.which == KeyConstants.END && cv.internalFire(deck, "end", e) && deck.last());
-                    eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.internalFire(deck, "home", e) && deck.first());
+                    eventHandled = eventHandled || (e.which == KeyConstants.END && cv.fire(deck, "end", e) && deck.last());
+                    eventHandled = eventHandled || (e.which == KeyConstants.HOME && cv.fire(deck, "home", e) && deck.first());
 
                     if (isDigitKey(e.which)) {
                         // TODO: support multi-digit slide numbers with a timeout
                         digit = getDigit(e.which);
                         index = (digit - 1 + 10) % 10;
-                        eventHandled = eventHandled || (cv.internalFire(deck, "jump", e, index) && deck.slide(index));
+                        eventHandled = eventHandled || (cv.fire(deck, "jump", e, index) && deck.slide(index));
                     }
 
                     return !eventHandled;
