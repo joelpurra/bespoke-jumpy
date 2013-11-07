@@ -6,7 +6,7 @@
   "bugs": "https://github.com/joelpurra/bespoke-jumpy/issues",
   "author": {
     "name": "Joel Purra",
-    "url": "https://github.com/joelpurra"
+    "url": "http://joelpurra.com/"
   },
   "main": "./dist/bespoke-jumpy.js",
   "repository": {
@@ -37,7 +37,8 @@
   },
   "licenses": [
     {
-      "type": "MIT"
+      "type": "MIT",
+      "url": "http://joelpurra.mit-license.org/2013"
     }
   ],
   "keywords": [
