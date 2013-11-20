@@ -56,6 +56,7 @@ require('bespoke-jumpy');
 
 Scott Kraft, [sakraft1 on flickr](https://secure.flickr.com/photos/sakraft1/), for his upload [From the Library of Congress: Man on a tame zebra jumping a fence in East Africa](https://secure.flickr.com/photos/sakraft1/2649955918/) ([CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)).
 
+My best friend, [bespoke-convenient](https://github.com/joelpurra/bespoke-convenient), for continued support - rain and shine. I love you, man.
 
 
 ## License
