@@ -66,3 +66,7 @@ When using bespoke-jumpy, comply to the [MIT license](http://joelpurra.mit-licen
 
 [bespoke.js]: https://github.com/markdalgleish/bespoke.js
 [default-events]: https://github.com/markdalgleish/bespoke.js#events
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/joelpurra/bespoke-jumpy/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
