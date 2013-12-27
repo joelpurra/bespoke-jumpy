@@ -2,7 +2,7 @@
   "name": "bespoke-jumpy",
   "version": "0.1.1",
   "dependencies": {
-    "bespoke.js": ">=0.3.0",
+    "bespoke.js": "~0.3.1",
     "bespoke-convenient": "~0.2.1"
   }
 }
