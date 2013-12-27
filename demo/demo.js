@@ -4,7 +4,6 @@
     "use strict";
 
     bespoke.horizontal.from("article", {
-        convenient: true,
         jumpy: true
     });
 }(bespoke));
