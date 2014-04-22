@@ -100,6 +100,10 @@
                         digit,
                         index;
 
+                    if(e.metaKey || e.ctrlKey || e.shiftKey) {
+                        return false;
+                    }
+
                     eventHandled = eventHandled || (e.which === KeyConstants.END && cv.fire(deck, "end", e) && !deck.last());
                     eventHandled = eventHandled || (e.which === KeyConstants.HOME && cv.fire(deck, "home", e) && !deck.first());
 
