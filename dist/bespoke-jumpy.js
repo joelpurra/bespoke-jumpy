@@ -106,7 +106,7 @@
                         digit,
                         index;
 
-                    if(e.metaKey || e.ctrlKey || e.shiftKey) {
+                    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
                         return false;
                     }
 
