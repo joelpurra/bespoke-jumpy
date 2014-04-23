@@ -2,7 +2,7 @@
  * bespoke-jumpy v0.1.2
  * https://github.com/joelpurra/bespoke-jumpy
  *
- * Copyright 2013, Joel Purra
+ * Copyright 2014, Joel Purra
  * This content is released under the MIT license
  */
 
