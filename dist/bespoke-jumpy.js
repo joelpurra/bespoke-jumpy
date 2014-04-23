@@ -1,5 +1,5 @@
 /*!
- * bespoke-jumpy v0.1.2
+ * bespoke-jumpy v0.1.3
  * https://github.com/joelpurra/bespoke-jumpy
  *
  * Copyright 2014, Joel Purra
