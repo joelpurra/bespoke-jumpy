@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/joelpurra/bespoke-jumpy.png?branch=master)](https://travis-ci.org/joelpurra/bespoke-jumpy)
+[![Build Status](https://secure.travis-ci.org/joelpurra/bespoke-jumpy.png?branch=master)](https://travis-ci.org/joelpurra/bespoke-jumpy) [![Coverage Status](https://coveralls.io/repos/joelpurra/bespoke-jumpy/badge.png)](https://coveralls.io/r/joelpurra/bespoke-jumpy)
 
 # bespoke-jumpy
 
@@ -13,27 +13,31 @@ Download the [production version][min] or the [development version][max], or use
 
 ## Usage
 
-First, include `bespoke.js`, `bespoke-convenient.js` and `bespoke-jumpy.js` in your page.
+This plugin is shipped in a [UMD format](https://github.com/umdjs/umd), meaning that it is available as a CommonJS/AMD module or browser global.
 
-Then, simply include the plugin when instantiating your presentation.
+For example, when using CommonJS modules:
 
 ```js
-bespoke.horizontal.from('article', {
-  jumpy: true
-});
+var bespoke = require('bespoke'),
+  jumpy = require('bespoke-jumpy');
+
+bespoke.from('#presentation', [
+  jumpy()
+]);
+```
+
+When using browser globals:
+
+```js
+bespoke.from('#presentation', [
+  bespoke.plugins.jumpy()
+]);
 ```
 
 - Keys <kbd>1</kbd>-<kbd>9</kbd>, <kbd>0</kbd>: jump to slide 1-9 and 10 respectively.
 - Keys <kbd>Home</kbd>, <kbd>End</kbd>: jump to the first/last slide respectively.
 
-
 ## Package managers
-
-### Bower
-
-```bash
-$ bower install bespoke-jumpy
-```
 
 ### npm
 
@@ -41,12 +45,10 @@ $ bower install bespoke-jumpy
 $ npm install bespoke-jumpy
 ```
 
-The bespoke-jumpy npm package is designed for use with [browserify](http://browserify.org/), e.g.
+### Bower
 
-```js
-require('bespoke');
-require('bespoke-convenient');
-require('bespoke-jumpy');
+```bash
+$ bower install bespoke-jumpy
 ```
 
 ## Credits
@@ -66,7 +68,3 @@ When using bespoke-jumpy, comply to the [MIT license](http://joelpurra.mit-licen
 
 [bespoke.js]: https://github.com/markdalgleish/bespoke.js
 [default-events]: https://github.com/markdalgleish/bespoke.js#events
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/joelpurra/bespoke-jumpy/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-

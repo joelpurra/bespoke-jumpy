@@ -3,7 +3,10 @@
 (function(bespoke) {
     "use strict";
 
-    bespoke.horizontal.from("article", {
-        jumpy: true
-    });
+    bespoke.from('article', [
+        bespoke.plugins.keys(),
+        bespoke.plugins.touch(),
+        bespoke.plugins.classes(),
+        bespoke.plugins.jumpy(),
+    ]);
 }(bespoke));

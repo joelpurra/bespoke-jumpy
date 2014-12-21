@@ -1,5 +1,11 @@
 /*global document:true, jasmine:true, bespoke:true, describe:true, it:true, expect:true, beforeEach:true */
 
+Function.prototype.bind = Function.prototype.bind || require("function-bind");
+
+var bespoke = require("bespoke"),
+    classes = require("bespoke-classes"),
+    jumpy = require("../../lib-instrumented/bespoke-jumpy.js");
+
 (function(document, jasmine, bespoke, describe, it, expect, beforeEach) {
     "use strict";
 
@@ -13,9 +19,18 @@
                     parent.appendChild(document.createElement("section"));
                 }
 
-                deck = bespoke.from(parent, {
-                    jumpy: true
-                });
+                deck = bespoke.from(parent, [
+                    classes(),
+                    jumpy()
+                ]);
+            },
+
+            expectToBeActive = function(index) {
+                expect(deck.slides[index].classList.contains("bespoke-active")).toBe(true);
+            },
+
+            expectToBeInactive = function(index) {
+                expect(deck.slides[index].classList.contains("bespoke-inactive")).toBe(true);
             };
 
         beforeEach(createDeck);
@@ -38,9 +53,11 @@
             });
 
             it("should go to first slide", function() {
-                expect(deck.slides[5].classList.contains("bespoke-active")).toBe(true);
+                expectToBeInactive(0);
+                expectToBeActive(5);
                 deck.first();
-                expect(deck.slides[0].classList.contains("bespoke-active")).toBe(true);
+                expectToBeInactive(5);
+                expectToBeActive(0);
             });
 
             it("should fire first event", function() {
@@ -58,9 +75,11 @@
             });
 
             it("should go to last slide", function() {
-                expect(deck.slides[5].classList.contains("bespoke-active")).toBe(true);
+                expectToBeInactive(9);
+                expectToBeActive(5);
                 deck.last();
-                expect(deck.slides[9].classList.contains("bespoke-active")).toBe(true);
+                expectToBeInactive(5);
+                expectToBeActive(9);
             });
 
             it("should fire last event", function() {
