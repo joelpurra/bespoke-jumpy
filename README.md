@@ -1,6 +1,8 @@
 [![Build Status](https://secure.travis-ci.org/joelpurra/bespoke-jumpy.png?branch=master)](https://travis-ci.org/joelpurra/bespoke-jumpy) [![Coverage Status](https://coveralls.io/repos/joelpurra/bespoke-jumpy/badge.png)](https://coveralls.io/r/joelpurra/bespoke-jumpy)
 
-# bespoke-jumpy
+# [bespoke-jumpy](https://github.com/joelpurra/bespoke-jumpy)
+
+**Check out the [presentation/demo.](https://joelpurra.github.io/bespoke-jumpy/demo/)**
 
 Keyboard shortcuts to jump straight to a specific slide in [bespoke.js][bespoke.js], using <kbd>Home</kbd>, <kbd>End</kbd> and the digit keys.
 
