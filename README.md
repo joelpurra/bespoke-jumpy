@@ -64,7 +64,7 @@ My best friend, [bespoke-convenient](https://github.com/joelpurra/bespoke-conven
 
 ## License
 
-Copyright (c) 2013, 2014, [Joel Purra](https://joelpurra.com/) All rights reserved.
+Copyright (c) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, [Joel Purra](https://joelpurra.com/) All rights reserved.
 
 When using bespoke-jumpy, comply to the [MIT license](https://joelpurra.mit-license.org/2013-2014). Please see the LICENSE file for details, and the [MIT License on Wikipedia](https://en.wikipedia.org/wiki/MIT_License).
 
