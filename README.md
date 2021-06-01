@@ -6,6 +6,14 @@
 
 Keyboard shortcuts to jump straight to a specific slide in [bespoke.js][bespoke.js], using <kbd>Home</kbd>, <kbd>End</kbd> and the digit keys.
 
+
+
+> ## ⚠️ This project has been archived
+>
+> No future updates are planned. Feel free to continue using it, but expect no support.
+
+
+
 ## Download
 
 Download the [production version][min] or the [development version][max], or use a [package manager](#package-managers).
